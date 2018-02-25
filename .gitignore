@@ -4,3 +4,4 @@ target/
 .project
 .jsdtscope
 .settings
+keyFile

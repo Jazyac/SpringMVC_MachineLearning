@@ -3,6 +3,7 @@ package com.crunchify.controller;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jazyac.healthApp.key.ApiKeyFileReader;
@@ -51,7 +52,7 @@ public class CrunchifyHelloWorld {
 	@RequestMapping("/submit")
 	public ModelAndView submit() {
  
-		return new ModelAndView("submit", "null", null );
+		return new ModelAndView("submit", food, "asdas" );
 	}
 	
 }

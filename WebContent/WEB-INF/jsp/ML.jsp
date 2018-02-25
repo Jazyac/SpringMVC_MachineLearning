@@ -47,20 +47,20 @@ body {
 		<section id="one" class="wrapper style2 spotlights">
 			<div class="inner">
 				<div>
-					<h1>Enter your weight and height</h1>
-<form id="submitForm">
-<input required id="weight" type="text" placeholder="Weight in Kgs"> <br>
-						<input required id="height" type="text" placeholder="Height in Cms"> <br>
+					<h1>Fat calculator</h1>
+<form id="submitForm" action="submit.html">
+
+						<input required id="Food" name="Food" type="text" placeholder="Type in any food with quantity. E.g. 1 slice of cake."> <br>
 						<br /> <input type="submit" value="Run"  />
 </form>
 											
 					<hr>
-					<div id="results" style="visibility:hidden;">
-					<h2>Results:</h2>
+<!-- 					<div id="results" style="visibility:hidden;"> -->
+<!-- 					<h2>Results:</h2> -->
 					
-					<p id="resultField"></p>
+<!-- 					<p id="resultField"></p> -->
 					
-					</div>
+<!-- 					</div> -->
 
 				</div>
 
@@ -94,21 +94,21 @@ body {
 	
 // }
 
-$(function() {
-    $('#submitForm').on('submit', function(e) {
+// $(function() {
+//     $('#submitForm').on('submit', function(e) {
     	
      
 
-        	var heightFld=document.getElementById("height");
-        	var weightFld=document.getElementById("weight");
-        	document.getElementById("results").style.visibility="visible";
+//         	var heightFld=document.getElementById("height");
+//         	var weightFld=document.getElementById("weight");
+//         	document.getElementById("results").style.visibility="visible";
 
-        		document.getElementById("resultField").innerHTML = "Weight:"+weightFld.value+", "+"Height:"+heightFld.value+".";
+//         		document.getElementById("resultField").innerHTML = "Weight:"+weightFld.value+", "+"Height:"+heightFld.value+".";
         	
         	
      
-    });
-});
+//     });
+// });
 
 
 </script>

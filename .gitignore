@@ -4,4 +4,4 @@ target/
 .project
 .jsdtscope
 .settings
-keyFile
+ApiKeyFileReader.java

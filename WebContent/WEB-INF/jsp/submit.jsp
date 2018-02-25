@@ -26,7 +26,7 @@ body {
  					<div id="results" >
  					<h2>Results:</h2>
  					
- 					<p id="resultField">${food}</p>
+ 					<p id="resultField">${results}</p>
  					
  					</div>
 						

@@ -23,24 +23,7 @@ public class CrunchifyHelloWorld {
 	@RequestMapping("/ML")
 	public ModelAndView ML() {
  
-		// These code snippets use an open-source library. http://unirest.io/java
-		try {
 
-
-			
-			HttpResponse<String> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr=1+stick+of+gum")
-					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
-					.header("Accept", "application/json")
-			.asString();
-			
-			
-
-			System.out.println(response.getBody());
-			
-		} catch (UnirestException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		
 
@@ -50,9 +33,29 @@ public class CrunchifyHelloWorld {
 	
 	
 	@RequestMapping("/submit")
-	public ModelAndView submit() {
- String food="asdsad";
-		return new ModelAndView("submit", "food", food );
+	public ModelAndView submit(@RequestParam("Food") String food) {
+ 
+//		 These code snippets use an open-source library. http://unirest.io/java
+		try {
+
+			String foodPlus = food.replaceAll(" ", "+");
+			
+			HttpResponse<String> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
+					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
+					.header("Accept", "application/json")
+			.asString();
+			
+			
+			return new ModelAndView("submit", "results", response.getBody() );
+			
+			
+		} catch (UnirestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+return new ModelAndView("submit", "results", "Error!- '"+food+"' is not an acceptable input" );
+			
 	}
 	
 }

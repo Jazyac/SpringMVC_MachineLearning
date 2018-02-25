@@ -21,6 +21,15 @@ body {
 	<div id="wrapper">
 	<section id="main" class="wrapper">
 						<div class="inner">
+						
+						<hr>
+ 					<div id="results" >
+ 					<h2>Results:</h2>
+ 					
+ 					<p id="resultField">${food}</p>
+ 					
+ 					</div>
+						
 							<a href="ML.html" class="button special fit">Back</a>
 
 	</section>

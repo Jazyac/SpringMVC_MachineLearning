@@ -51,8 +51,8 @@ public class CrunchifyHelloWorld {
 	
 	@RequestMapping("/submit")
 	public ModelAndView submit() {
- 
-		return new ModelAndView("submit", food, "asdas" );
+ String food="asdsad";
+		return new ModelAndView("submit", "food", food );
 	}
 	
 }

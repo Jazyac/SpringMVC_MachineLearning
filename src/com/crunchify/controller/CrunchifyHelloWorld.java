@@ -1,6 +1,5 @@
 package com.crunchify.controller;
  
-import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,10 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jazyac.healthApp.key.ApiKeyFileReader;
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
- 
+import org.json.*;
 
  
 @Controller
@@ -47,6 +45,20 @@ public class CrunchifyHelloWorld {
 			
 			
 			return new ModelAndView("submit", "results", response.getBody() );
+			
+			
+			
+			/*
+			 * HttpResponse<JsonNode> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
+					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
+					.header("Accept", "application/json")
+			.asJson();
+			
+		JSONObject jsonObject=	response.getBody().getObject();
+		String results= jsonObject.getJSONObject("ENERC_KCAL").getString("label");
+			return new ModelAndView("submit", "results", results );
+			 * 
+			 * */
 			
 			
 		} catch (UnirestException e) {

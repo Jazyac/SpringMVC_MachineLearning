@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jazyac.healthApp.key.ApiKeyFileReader;
 import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.*;
@@ -38,27 +39,35 @@ public class CrunchifyHelloWorld {
 
 			String foodPlus = food.replaceAll(" ", "+");
 			
-			HttpResponse<String> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
-					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
-					.header("Accept", "application/json")
-			.asString();
+//			HttpResponse<String> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
+//					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
+//					.header("Accept", "application/json")
+//			.asString();
+//			
+//			
+//			return new ModelAndView("submit", "results", response.getBody() );
+//			
 			
 			
-			return new ModelAndView("submit", "results", response.getBody() );
-			
-			
-			
-			/*
-			 * HttpResponse<JsonNode> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
+			 HttpResponse<JsonNode> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
 					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
 					.header("Accept", "application/json")
 			.asJson();
 			
 		JSONObject jsonObject=	response.getBody().getObject();
-		String results= jsonObject.getJSONObject("ENERC_KCAL").getString("label");
-			return new ModelAndView("submit", "results", results );
-			 * 
-			 * */
+	 JSONArray ingredients= (JSONArray) jsonObject.get("ingredients");
+	//	String ing =   ingredients.getString(0);
+	
+
+	 
+	 JSONObject parsedObject =  (JSONObject) ingredients.get(0);
+	 String parsedString =(String) parsedObject.get("parsed").toString();
+	 //System.out.println(ingredients.toString(1));
+	// String ing =  ingredients.toString();
+
+		//String results= jsonObject.getJSONObject("ENERC_KCAL");
+			return new ModelAndView("submit", "results", ing );
+			
 			
 			
 		} catch (UnirestException e) {

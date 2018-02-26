@@ -69,17 +69,18 @@ public class CrunchifyHelloWorld {
 			
 		JSONObject jsonObject=	response.getBody().getObject();
 	 JSONArray ingredients= (JSONArray) jsonObject.get("ingredients");
-	//	String ing =   ingredients.getString(0);
+
 	
 
 	 
 	 JSONObject parsedObject =  (JSONObject) ingredients.get(0);
 	 String parsedString =(String) parsedObject.get("parsed").toString();
-	 //System.out.println(ingredients.toString(1));
-	// String ing =  ingredients.toString();
+	 JSONArray parsedArray= (JSONArray) parsedObject.get("parsed");
 
-		//String results= jsonObject.getJSONObject("ENERC_KCAL");
-			return new ModelAndView("submit", "results", parsedString );
+	 
+	 JSONObject quantity= (JSONObject) parsedArray.get(0);
+	 String quantityStr=(String) quantity.get("quantity").toString();
+			return new ModelAndView("submit", "results", quantityStr );
 			
 			
 			

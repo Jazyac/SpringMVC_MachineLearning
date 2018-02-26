@@ -47,6 +47,19 @@ public class CrunchifyHelloWorld {
 //			
 //			return new ModelAndView("submit", "results", response.getBody() );
 //			
+//			
+//			HttpResponse<String> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
+//					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
+//					.header("Accept", "application/json")
+//			.asString();
+//			
+//			String reponseStr=response.getBody();
+//			
+//			String fatStr=reponseStr.substring(reponseStr.indexOf("Total lipid (fat)") + 1, reponseStr.indexOf("}"));
+//			return new ModelAndView("submit", "results", fatStr );
+////			
+//			
+			
 			
 			
 			 HttpResponse<JsonNode> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
@@ -66,7 +79,7 @@ public class CrunchifyHelloWorld {
 	// String ing =  ingredients.toString();
 
 		//String results= jsonObject.getJSONObject("ENERC_KCAL");
-			return new ModelAndView("submit", "results", ing );
+			return new ModelAndView("submit", "results", parsedString );
 			
 			
 			

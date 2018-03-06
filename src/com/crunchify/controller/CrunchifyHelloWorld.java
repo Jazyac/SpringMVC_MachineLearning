@@ -38,49 +38,23 @@ public class CrunchifyHelloWorld {
 		try {
 
 			String foodPlus = food.replaceAll(" ", "+");
-			
-//			HttpResponse<String> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
-//					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
-//					.header("Accept", "application/json")
-//			.asString();
-//			
-//			
-//			return new ModelAndView("submit", "results", response.getBody() );
-//			
-//			
-//			HttpResponse<String> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
-//					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
-//					.header("Accept", "application/json")
-//			.asString();
-//			
-//			String reponseStr=response.getBody();
-//			
-//			String fatStr=reponseStr.substring(reponseStr.indexOf("Total lipid (fat)") + 1, reponseStr.indexOf("}"));
-//			return new ModelAndView("submit", "results", fatStr );
-////			
-//			
-			
-			
-			
-			 HttpResponse<JsonNode> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
+			HttpResponse<JsonNode> response = Unirest.get("https://edamam-edamam-nutrition-analysis.p.mashape.com/api/nutrition-data?ingr="+foodPlus)
 					.header("X-Mashape-Key", ApiKeyFileReader.getKey())
 					.header("Accept", "application/json")
 			.asJson();
 			
-		JSONObject jsonObject=	response.getBody().getObject();
-	 JSONArray ingredients= (JSONArray) jsonObject.get("ingredients");
 
-	
-
+	 JSONObject jsonObject=	response.getBody().getObject(); //gets the whole body
+	 JSONArray ingredientsArray= (JSONArray) jsonObject.get("ingredients");
+	 JSONObject ingredientsObject =  (JSONObject) ingredientsArray.get(0);
+	 JSONArray parsedArray= (JSONArray) ingredientsObject.get("parsed");
+	 JSONObject nutrientsObject =  (JSONObject) parsedArray.get(0);
+	 JSONObject nutrientsObjectTwo=(JSONObject) nutrientsObject.get("nutrients");
+	 JSONObject fatObject=(JSONObject) nutrientsObjectTwo.get("FAT");
+	 Double quantity=(Double) fatObject.get("quantity");
+	 String units=(String) fatObject.get("unit");
 	 
-	 JSONObject parsedObject =  (JSONObject) ingredients.get(0);
-	 String parsedString =(String) parsedObject.get("parsed").toString();
-	 JSONArray parsedArray= (JSONArray) parsedObject.get("parsed");
-
-	 
-	 JSONObject quantity= (JSONObject) parsedArray.get(0);
-	 String quantityStr=(String) quantity.get("quantity").toString();
-			return new ModelAndView("submit", "results", quantityStr );
+			return new ModelAndView("submit", "results", food+" has/have "+quantity+ units+" of fats.");
 			
 			
 			

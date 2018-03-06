@@ -11,7 +11,8 @@ Milestones-<br>
 2.Add Frontend(partially done, needs improvement)<br>
 3.Deploy on Heroku(DONE)<br>
 4.Add functionalities-<br>
-4a.API Nutrition info(partialy done)<br>
+4a.API Nutrition info(Shows fat contents of any food)<br>
+4b.Simple Descision making using ML library(Weka)(under progress)
 
 Reference:
 https://crunchify.com/simplest-spring-mvc-hello-world-example-tutorial-spring-model-view-controller-tips/

@@ -2,6 +2,8 @@
 
 <html>
 <head>
+<link rel="shortcut icon" type="image/png" href="https://thumb1.shutterstock.com/display_pic_with_logo/265516/708030436/stock-vector-grayscale-heartbeat-vital-sign-to-ekg-frequency-708030436.jpg"/>
+
 <spring:url value="/resources/main.css" var="mainCSS" />
 <spring:url value="/resources/test.js" var="testJS" />
 <script

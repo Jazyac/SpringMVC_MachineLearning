@@ -31,8 +31,8 @@ body {
 
 					<li><a href="#intro">Welcome</a></li>
 					<li><a href="#one">Test</a></li>
-					<li><div class="g-signin2" data-onsuccess="onSignIn"></div></li>
-<li><a href="#" onclick="signOut();">Sign out</a></li>
+					<li id="signIn"><div class="g-signin2" data-onsuccess="onSignIn"></div></li>
+			<li id="signOut"><a href="#" onclick="signOut();">Sign out</a></li>
 
 				</ul>
 			</nav>
@@ -104,6 +104,31 @@ function onSignIn(googleUser) {
 	  console.log('Image URL: ' + profile.getImageUrl());
 	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 	}
+	
+	
+window.addEventListener("load", function(){
+	var isSignedIn =GoogleAuth.isSignedIn.get();
+	console.log(auth2);
+	
+	var signIn=document.getElementById("signIn");
+	var signOut=document.getElementById("signOut");
+
+// 	if(GoogleAuth.isSignedIn.get()){
+		
+// console.log("yesyeysey");		
+		
+// 	}
+// 	else{
+		
+// 		console.log("nonon");
+		
+// 	}
+	
+	
+	
+	
+	
+});
 </script>
 
 </script>

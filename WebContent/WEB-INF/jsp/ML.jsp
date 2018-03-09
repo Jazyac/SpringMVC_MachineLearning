@@ -18,6 +18,8 @@ body {
 	
 }
 </style>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="376861918782-bppai3761t2ttnjafleatvaaeidod74j.apps.googleusercontent.com">
 </head>
 <body>
 
@@ -29,6 +31,8 @@ body {
 
 					<li><a href="#intro">Welcome</a></li>
 					<li><a href="#one">Test</a></li>
+					<li><div class="g-signin2" data-onsuccess="onSignIn"></div></li>
+<li><a href="#" onclick="signOut();">Sign out</a></li>
 
 				</ul>
 			</nav>
@@ -85,33 +89,22 @@ body {
 
 </body>
 <script>
-// function showResults(){
-	
-	
-// 	var heightFld=document.getElementById("height");
-// 	var weightFld=document.getElementById("weight");
-// 	document.getElementById("results").style.visibility="visible";
 
-// 		document.getElementById("resultField").innerHTML = "Weight:"+weightFld.value+", "+"Height:"+heightFld.value+".";
-	
-// }
+function signOut() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
+}
 
-// $(function() {
-//     $('#submitForm').on('submit', function(e) {
-    	
-     
-
-//         	var heightFld=document.getElementById("height");
-//         	var weightFld=document.getElementById("weight");
-//         	document.getElementById("results").style.visibility="visible";
-
-//         		document.getElementById("resultField").innerHTML = "Weight:"+weightFld.value+", "+"Height:"+heightFld.value+".";
-        	
-        	
-     
-//     });
-// });
-
+function onSignIn(googleUser) {
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
+</script>
 
 </script>
 </html>

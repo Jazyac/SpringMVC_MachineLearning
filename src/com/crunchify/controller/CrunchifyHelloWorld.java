@@ -21,16 +21,8 @@ public class CrunchifyHelloWorld {
 	
 	@RequestMapping("/ML")
 	public ModelAndView ML() {
- 
-
-		
-		
-
-
-		return new ModelAndView("ML", "null", null );
+ 		return new ModelAndView("ML", "null", null );
 	}
-	
-	
 	@RequestMapping("/submit")
 	public ModelAndView submit(@RequestParam("Food") String food) {
  
@@ -55,9 +47,6 @@ public class CrunchifyHelloWorld {
 	 String units=(String) fatObject.get("unit");
 	 
 			return new ModelAndView("submit", "results", food+" has/have "+quantity+ units+" of fats.");
-			
-			
-			
 		} catch (UnirestException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
